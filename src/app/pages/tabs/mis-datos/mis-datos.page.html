@@ -1,0 +1,117 @@
+<app-header titulo="Información Básica"></app-header>
+
+<ion-content class="ion-padding">
+    <form #informacionBasica="ngForm" (ngSubmit)="onSubmit( informacionBasica )">
+        <ion-grid fixed>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label>
+                            <ion-icon name="card-outline"></ion-icon> Tipo de documento <span class="required">*</span>
+                        </ion-label>
+                        <ion-select interface="action-sheet" placeholder="Seleccionar" name="tipo_documento" [(ngModel)]="usuario.tipo_documento" required>
+                            <ion-select-option *ngFor="let tipo_documento of environment.tipos_documentos" value="{{ tipo_documento.id }}">{{ tipo_documento.name }}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">
+                            <ion-icon name="person-outline"></ion-icon> Número de documento <span class="required">*</span>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Ingrese su número de documento" name="numero_documento" [(ngModel)]="usuario.numero_documento" required></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">
+                            <ion-icon name="person-outline"></ion-icon> Primer nombre <span class="required">*</span>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Ingrese su primer nombre" name="primer_nombre" [(ngModel)]="usuario.primer_nombre" required></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">
+                            <ion-icon name="person-outline"></ion-icon> Segundo nombre
+                        </ion-label>
+                        <ion-input type="text" placeholder="Ingrese su segundo nombre" name="segundo_nombre" [(ngModel)]="usuario.segundo_nombre"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">
+                            <ion-icon slot="start" name="person-outline"></ion-icon> Primer apellido <span class="required">*</span>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Ingrese su primer apellido" name="primer_apellido" [(ngModel)]="usuario.primer_apellido" required></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">
+                            <ion-icon name="person-outline"></ion-icon> Segundo apellido
+                        </ion-label>
+                        <ion-input type="text" placeholder="Ingrese su segundo apellido" name="segundo_apellido" [(ngModel)]="usuario.segundo_apellido"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="fixed" class="ion-text-wrap">
+                            <ion-icon name="calendar-outline"></ion-icon> Fecha de Nacimiento <span class="required">*</span>
+                        </ion-label>
+                        <ion-datetime-button slot="end" datetime="fecha_nacimiento"></ion-datetime-button>
+                    </ion-item>
+                    <ion-modal [keepContentsMounted]="true">
+                        <ng-template>
+                            <ion-datetime id="fecha_nacimiento" [showDefaultButtons]="true" [value]="usuario.fecha_nacimiento" presentation="date" display-format="DD MMMM YYYY" [max]="_data_service.obtenerFechaActual()"></ion-datetime>
+                        </ng-template>
+                    </ion-modal>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label>
+                            <ion-icon name="card-outline"></ion-icon> Género <span class="required">*</span>
+                        </ion-label>
+                        <ion-select interface="action-sheet" placeholder="Seleccionar" name="genero" [(ngModel)]="usuario.genero" required>
+                            <ion-select-option *ngFor="let genero of environment.genero" value="{{ genero.id }}">{{ genero.name }}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-text>
+                            <p class="capital-primary-two">Archivos de soporte</p>
+                            <p>Si deseas guardar los cambios a tus datos debes adjuntar tu documento de identidad actual</p>
+                            <ion-input type="file" accept="image/*, .pdf" name="documento" [(ngModel)]="documento_adjunto" required></ion-input>
+                        </ion-text>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-button type="submit" expand="block" color="primary" [disabled]="informacionBasica.invalid">
+                        Guardar
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </form>
+</ion-content>

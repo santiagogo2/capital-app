@@ -1,0 +1,39 @@
+[{
+        "name": "Norte",
+        "value": "norte",
+        "hospitales": [
+            { "name": "UNIDAD FUNCIONAL USAQUEN I" },
+            { "name": "UNIDAD FUNCIONAL CHAPINERO I" },
+            { "name": "UNIDAD FUNCIONAL ENGATIVA II" },
+            { "name": "UNIDAD FUNCIONAL SUBA II" }
+        ]
+    },
+    {
+        "name": "Sur",
+        "value": "sur",
+        "hospitales": [
+            { "name": "UNIDAD FUNCIONAL NAZARETH I" },
+            { "name": "UNIDAD FUNCIONAL USME I" },
+            { "name": "UNIDAD FUNCIONAL VISTA HERMOSA I" },
+            { "name": "UNIDAD FUNCIONAL TUNJUELITO II" }
+        ]
+    },
+    {
+        "name": "Sur Occidente",
+        "value": "sur_occidente",
+        "hospitales": [
+            { "name": "HOSPITAL PABLO VI BOSA" },
+            { "name": "HOSPITAL DEL SUR" },
+            { "name": "HOSPITAL FONTIBON" }
+        ]
+    },
+    {
+        "name": "Centro Oriente",
+        "value": "centro_oriente",
+        "hospitales": [
+            { "name": "UNIDAD FUNCIONAL CENTRO ORIENTE II" },
+            { "name": "UNIDAD FUNCIONAL SAN CRISTOBAL I" },
+            { "name": "UNIDAD FUNCIONAL TAFAEL URIBE I" }
+        ]
+    }
+]

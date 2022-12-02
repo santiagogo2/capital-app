@@ -1,0 +1,110 @@
+<app-header titulo="Solicitar Autorización"></app-header>
+
+<ion-content class="ion-padding">
+    <ion-card>
+        <ion-item>
+            <ion-avatar slot="start" style="width: 25%; height: 25%;">
+                <img src="/assets/avatars/av-1.png" />
+            </ion-avatar>
+            <ion-label>
+                <p class="capital-primary-two">
+                    <ng-container *ngIf="autorizacion.usuario.primer_nombre">{{ autorizacion.usuario.primer_nombre + ' ' }}</ng-container>
+                    <ng-container *ngIf="autorizacion.usuario.segundo_nombre">{{ autorizacion.usuario.segundo_nombre + ' ' }}</ng-container>
+                    <ng-container *ngIf="autorizacion.usuario.primer_apellido">{{ autorizacion.usuario.primer_apellido + ' ' }}</ng-container>
+                    <ng-container *ngIf="autorizacion.usuario.segundo_apellido">{{ autorizacion.usuario.segundo_apellido + ' ' }}</ng-container>
+                </p>
+                <p style="font-weight: bold;">CC: {{ autorizacion.usuario.numero_documento }}</p>
+                <p>Titular / Beneficiario</p>
+            </ion-label>
+        </ion-item>
+    </ion-card>
+
+    <form #solicitarAutorizacionForm="ngForm" (ngSubmit)="onSubmit( solicitarAutorizacionForm )">
+        <ion-grid fixed>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">
+                            <ion-icon name="phone-portrait-outline"></ion-icon> Celular <span class="required">*</span>
+                        </ion-label>
+                        <ion-input type="number" placeholder="Ingrese su número de celular" name="celular" [(ngModel)]="autorizacion.celular" required></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">
+                            <ion-icon name="call-outline"></ion-icon> Telefono fijo
+                        </ion-label>
+                        <ion-input type="number" placeholder="Ingrese su número de teléfono fijo" name="telefono_fijo" [(ngModel)]="autorizacion.telefono_fijo" required></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label>
+                            <ion-icon name="mail-outline"></ion-icon> Correo electrónico <span class="required">*</span>
+                        </ion-label>
+                        <ion-input type="email" placeholder="Ingrese la dirección de correo electrónico" name="correo_electronico" [(ngModel)]="autorizacion.correo_electronico" required></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-icon name="pin-outline"></ion-icon> Municipio de residencia <span class="required">*</span>
+                        </ion-label>
+                        <ion-select interface="action-sheet" placeholder="Seleccionar" name="municipio_residencia" [(ngModel)]="autorizacion.municipio_residencia" required>
+                            <ion-select-option *ngFor="let tipo_documento of environment.tipos_documentos" value="{{ tipo_documento.id }}">{{ tipo_documento.name }}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-icon name="pin-outline"></ion-icon> Departamento de residencia <span class="required">*</span>
+                        </ion-label>
+                        <ion-select interface="action-sheet" placeholder="Seleccionar" name="departamento_residencia" [(ngModel)]="autorizacion.departamento_residencia" required>
+                            <ion-select-option *ngFor="let tipo_documento of environment.tipos_documentos" value="{{ tipo_documento.id }}">{{ tipo_documento.name }}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">
+                            <ion-icon name="pin-outline"></ion-icon> Dirección de residencia <span class="required">*</span>
+                        </ion-label>
+                        <ion-input type="text" placeholder="Ingrese su dirección de residencia" name="direccion_residencia" [(ngModel)]="autorizacion.direccion_residencia" required></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-text>
+                            <p class="capital-primary-two">Adjuntar orden médica</p>
+                            <p>Adjunta tu orden médica. Es importante que esté vigente (No superior a 30 días)</p>
+                            <ion-input type="file" accept="image/*, .pdf" name="documento" [(ngModel)]="documento_adjunto" required></ion-input>
+                        </ion-text>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-button type="submit" expand="block" color="primary" [disabled]="solicitarAutorizacionForm.invalid">
+                        Guardar
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </form>
+</ion-content>

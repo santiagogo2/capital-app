@@ -1,0 +1,47 @@
+<app-header titulo="Certificado de afiliación"></app-header>
+
+<ion-content class="ion-padding">
+    <ion-text class="ion-text-center ion-margin-top capital-primary-two">
+        <p>Seleccione el tipo de certificado que desea generar</p>
+    </ion-text>
+
+    <form #informacionBasica="ngForm" (ngSubmit)="onSubmit()">
+        <ion-grid fixed>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label>
+                            <ion-icon name="document-outline"></ion-icon> Tipo de certificado <span class="required">*</span>
+                        </ion-label>
+                        <ion-select interface="action-sheet" placeholder="Seleccionar" name="tipo_documento" [(ngModel)]="tipo_certificado" required>
+                            <ion-select-option value="1">Certificado de afiliado</ion-select-option>
+                            <ion-select-option value="2">Certificado de afiliado con grupo familiar</ion-select-option>
+                            <ion-select-option value="3">Certificado de un beneficiario del grupo familiar</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="tipo_certificado == 2 || tipo_certificado == 3">
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-icon name="document-outline"></ion-icon> Información del grupo familiar <span class="required">*</span>
+                        </ion-label>
+                        <ion-select interface="action-sheet" placeholder="Seleccionar" name="tipo_documento" [(ngModel)]="usuario_seleccionado" required>
+                            <ion-select-option value="1032462437">1032462437 - Santiago Ramírez Gaitán</ion-select-option>
+                            <ion-select-option value="39553387">39553387 - Sonia Gaitán Barreto</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-button type="submit" expand="block" color="primary" [disabled]="informacionBasica.invalid">
+                        Generar Certificado
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

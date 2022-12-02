@@ -1,0 +1,285 @@
+<ion-content>
+    <ion-slides class="mainSlide" #slidePrincipal>
+        <ion-slide>
+            <form (ngSubmit)="login( loginForm )" #loginForm="ngForm">
+                <ion-grid fixed>
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-item>
+                                <ion-label>
+                                    Tipo de documento <span class="required">*</span>
+                                </ion-label>
+                                <ion-select interface="action-sheet" placeholder="Seleccionar" name="tipo_documento" [(ngModel)]="usuario.tipo_documento" required>
+                                    <ion-select-option *ngFor="let tipo_documento of environment.tipos_documentos" value="{{ tipo_documento.id }}">{{ tipo_documento.name }}</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-item>
+                                <ion-label position="floating">
+                                    Número de documento <span class="required">*</span>
+                                </ion-label>
+                                <ion-input type="text" placeholder="Ingrese su número de documento" name="numero_documento" [(ngModel)]="usuario.numero_documento" required></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-item>
+                                <ion-label position="floating">
+                                    Contraseña <span class="required">*</span>
+                                </ion-label>
+                                <ion-input type="password" placeholder="Ingrese su contraseña" name="password" [(ngModel)]="usuario.numero_documento" required></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-button type="submit" color="capital-primary-two" shape="round">
+                                Iniciar Sesión
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-text class="ion-text-center" color="capital-primary-two" style="font-size: 15px">
+                                <p>Olvidé mi contraseña</p>
+                            </ion-text>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </form>
+        </ion-slide>
+
+        <ion-slide>
+            <!-- <ion-grid fixed>
+                <ion-row>
+                    <ion-col>
+                        <h3>Seleccione Avatar</h3>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-slides [options]="avatar_slide">
+                            <ion-slide *ngFor="let avatar of avatars">
+                                <ion-img class="pick-avatar" src="/assets/avatars/{{ avatar.img }}" [ngClass]="{ 'pick-avatar-seleccionado': avatar.seleccionado }" (click)="seleccionarAvatar( avatar )"></ion-img>
+                            </ion-slide>
+                        </ion-slides>
+                    </ion-col>
+                </ion-row>
+                <form (ngSubmit)="registrarse( registrarseForm )" #registrarseForm="ngForm">
+                    <ion-row>
+                        <ion-col>
+                            <ion-list>
+                                <ion-item>
+                                    <ion-label>Email</ion-label>
+                                    <ion-input name="email" type="email" required></ion-input>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Nombre</ion-label>
+                                    <ion-input name="nombre" type="text" required></ion-input>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Password</ion-label>
+                                    <ion-input name="password" type="password" required></ion-input>
+                                </ion-item>
+                            </ion-list>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-button type="submit" color="tertiary" shape="round">
+                                Crear usuario
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </form>
+            </ion-grid> -->
+            <ion-grid fixed>
+                <ion-row>
+                    <ion-col size="12">
+                        <ul id="progressbar" #progressbar>
+                            <li class="active">Tus Datos</li>
+                            <li>Contacto</li>
+                            <li>Confirmación</li>
+                        </ul>
+                    </ion-col>
+                </ion-row>
+                <ion-slides [options]="register_slide" #registerSlides>
+                    <ion-slide>
+                        <form (ngSubmit)="avanzarRegistro( 1 )" #registrarDatosForm="ngForm">
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-item>
+                                        <ion-label>
+                                            Tipo de documento <span class="required">*</span>
+                                        </ion-label>
+                                        <ion-select interface="action-sheet" placeholder="Seleccionar" name="tipo_documento" [(ngModel)]="usuario.tipo_documento" required>
+                                            <ion-select-option *ngFor="let tipo_documento of environment.tipos_documentos" value="{{ tipo_documento.id }}">{{ tipo_documento.name }}</ion-select-option>
+                                        </ion-select>
+                                    </ion-item>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-item>
+                                        <ion-label position="floating">
+                                            Número de documento <span class="required">*</span>
+                                        </ion-label>
+                                        <ion-input type="text" placeholder="Ingrese su número de documento" name="numero_documento" [(ngModel)]="usuario.numero_documento" required></ion-input>
+                                    </ion-item>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-item>
+                                        <ion-label position="floating">
+                                            Contraseña <span class="required">*</span>
+                                        </ion-label>
+                                        <ion-input type="password" placeholder="Ingrese su contraseña" name="password" [(ngModel)]="usuario.numero_documento" required></ion-input>
+                                    </ion-item>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-item>
+                                        <ion-label position="floating">
+                                            Confirmación Contraseña <span class="required">*</span>
+                                        </ion-label>
+                                        <ion-input type="password" placeholder="Confirme la contraseña" name="password_confirm" [(ngModel)]="usuario.numero_documento" required></ion-input>
+                                    </ion-item>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-item>
+                                        <ion-checkbox slot="start" required></ion-checkbox>
+                                        <ion-label class="ion-text-wrap">Aceptar los terminos, condiciones y políticas de privacidad</ion-label>
+                                    </ion-item>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-button type="submit" color="capital-primary-two" shape="round" [disabled]="registrarDatosForm.invalid">
+                                        Continuar
+                                    </ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </form>
+                    </ion-slide>
+
+                    <ion-slide>
+                        <form (ngSubmit)="avanzarRegistro( 2 )" #registrarseForm="ngForm">
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-text class="ion-text-left" style="font-size: 15px">
+                                        <p>Seleccione el número de celular y/o correo electrónico donde desea recibir el código de confirmación</p>
+                                    </ion-text>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-item class="ion-no-border">
+                                        <ion-checkbox slot="start"></ion-checkbox>
+                                        <ion-label class="ion-text-wrap">Número telefónico</ion-label>
+                                    </ion-item>
+                                    <ion-item>
+                                        <ion-input type="number" placeholder="Ingrese su número telefónico" name="numero_telefonico" [(ngModel)]="usuario.numero_documento" required pattern="[0-9]+"></ion-input>
+                                    </ion-item>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-item class="ion-no-border">
+                                        <ion-checkbox slot="start"></ion-checkbox>
+                                        <ion-label class="ion-text-wrap">Correo electrónico</ion-label>
+                                    </ion-item>
+                                    <ion-item>
+                                        <ion-input type="email" placeholder="Ingrese su correo electrónico" name="correo_electronico" [(ngModel)]="usuario.numero_documento" required></ion-input>
+                                    </ion-item>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-text class="ion-text-center" color="capital-primary-two" style="font-size: 15px">
+                                        <p>Ayuda para ingresar</p>
+                                    </ion-text>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size="6">
+                                    <ion-button color="capital-primary-two" shape="round" (click)="regresarRegistro( 0 )">
+                                        Regresar
+                                    </ion-button>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <ion-button type="submit" color="capital-primary-two" shape="round">
+                                        Continuar
+                                    </ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </form>
+                    </ion-slide>
+
+                    <ion-slide>
+                        <form (ngSubmit)="registrarse( registrarseForm )" #registrarseForm="ngForm">
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-input #opcion1 class="code-confirmation" type="text" maxlength="1" (keyup)="controladorOpciones($event,opcion2,'')"></ion-input>
+                                    <ion-input #opcion2 class="code-confirmation" type="text" maxlength="1" (keyup)="controladorOpciones($event,opcion3,opcion1)"></ion-input>
+                                    <ion-input #opcion3 class="code-confirmation" type="text" maxlength="1" (keyup)="controladorOpciones($event,opcion4,opcion2)"></ion-input>
+                                    <ion-input #opcion4 class="code-confirmation" type="text" maxlength="1" (keyup)="controladorOpciones($event,opcion5,opcion3)"></ion-input>
+                                    <ion-input #opcion5 class="code-confirmation" type="text" maxlength="1" (keyup)="controladorOpciones($event,opcion6,opcion4)"></ion-input>
+                                    <ion-input #opcion6 class="code-confirmation" type="text" maxlength="1" (keyup)="controladorOpciones($event,'',opcion5)"></ion-input>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-text class="ion-text-center" color="capital-primary-two" style="font-size: 15px">
+                                        <p>No recibí el código de confirmación</p>
+                                    </ion-text>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row style="margin-top: 5rem;">
+                                <ion-col size="6">
+                                    <ion-button color="capital-primary-two" shape="round" (click)="regresarRegistro( 1 )">
+                                        Regresar
+                                    </ion-button>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <ion-button type="submit" color="capital-primary-two" shape="round">
+                                        Crear Usuario
+                                    </ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </form>
+                    </ion-slide>
+                </ion-slides>
+            </ion-grid>
+        </ion-slide>
+    </ion-slides>
+</ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col>
+                <ion-button shape="round" expand="full" size="small" fill="outline" color="tertiary" (click)="mostrarLogin()">
+                    Ingresar
+                </ion-button>
+            </ion-col>
+
+            <ion-col>
+                <ion-button shape="round" expand="full" size="small" fill="outline" color="tertiary" (click)="mostrarRegistro()">
+                    Registrarme
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>

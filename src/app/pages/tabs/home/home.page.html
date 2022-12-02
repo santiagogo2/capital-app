@@ -1,0 +1,12 @@
+<div class="ion-page" id="main-content">
+    <app-principal-header></app-principal-header>
+    <ion-content>
+        <ion-grid fixed>
+            <ion-row>
+                <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="6" *ngFor="let item of opciones_menu | async">
+                    <app-modulos-card [titulo_tarjeta]="item.name" [url_tarjeta]="item.url"></app-modulos-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
+</div>

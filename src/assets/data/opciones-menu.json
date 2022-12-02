@@ -1,0 +1,26 @@
+[{
+        "icon": "clipboard-outline",
+        "name": "Autorizaciones",
+        "url": "/tabs/autorizaciones"
+    },
+    {
+        "icon": "reader-outline",
+        "name": "Certificados",
+        "url": "/certificados"
+    },
+    {
+        "icon": "analytics-outline",
+        "name": "Mis Datos",
+        "url": "/mis-datos"
+    },
+    {
+        "icon": "calendar-outline",
+        "name": "Mis Citas",
+        "url": "/action-sheet"
+    },
+    {
+        "icon": "list-circle-outline",
+        "name": "Redes Prestadoras",
+        "url": "/tabs/red-prestadora"
+    }
+]

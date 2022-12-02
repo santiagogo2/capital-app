@@ -1,0 +1,14 @@
+<ion-grid fixed>
+    <ion-row *ngFor="let opciones of opciones_card">
+        <ion-col size="12">
+            <ion-card button="true" [routerLink]="opciones.url">
+                <ion-item detail>
+                    <ion-avatar slot="start">
+                        <img [src]="opciones.imagen" />
+                    </ion-avatar>
+                    <ion-label>{{ opciones.titulo }}</ion-label>
+                </ion-item>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>
